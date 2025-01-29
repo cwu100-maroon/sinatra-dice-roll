@@ -1,5 +1,13 @@
 require "sinatra"
 require "sinatra/reloader"
+require "better_errors"
+require "binding_of_caller"
+
+# Need this configuration for better_errors
+use(BetterErrors::Middleware)
+BetterErrors.application_root = __dir__
+BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
+
 
 # get("/giraffe") do
 #   "Hopefully this shows up without having to restart the server 🤞🏾"
@@ -33,7 +41,7 @@ end
 
 get("/")do
   "<h1>Dice Roll</h1>
-  <a ref = https://curly-trout-4jvrw5w4vpv52qpp4-4567.app.github.dev/dice2/6>2d6</a>
-  <a ref = https://curly-trout-4jvrw5w4vpv52qpp4-4567.app.github.dev/dice2/6>2d10</a>
-  <a ref = https://curly-trout-4jvrw5w4vpv52qpp4-4567.app.github.dev/dice/1/20>1d20</a>"
+  <a href = 'https://curly-trout-4jvrw5w4vpv52qpp4-4567.app.github.dev/dice2/6'>2d6</a> <br>
+  <a href = 'https://curly-trout-4jvrw5w4vpv52qpp4-4567.app.github.dev/dice2/6'>2d10</a> <br>
+  <a href = 'https://curly-trout-4jvrw5w4vpv52qpp4-4567.app.github.dev/dice/1/20'>1d20</a>"
 end
