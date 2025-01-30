@@ -18,10 +18,9 @@ get("/dice2/6") do
   second_die = rand (1..6)
   sum = first_die + second_die
 
-  outcome = "you rolled the first die as #{first_die} and second die as #{second_die} for a total sum of #{sum}"
+  @outcome = "you rolled the first die as #{first_die} and second die as #{second_die} for a total sum of #{sum}"
 
-  "<h1>2d6</h1>
-  <p> #{outcome} </p>"
+  erb(:two_six)
 end
 
 get("/dice/2/10")do
@@ -29,7 +28,8 @@ get("/dice/2/10")do
   second_die = rand(1..10)
   sum = first_die + second_die
 
-  outcome = "first die is #{first_die} and second die is #{second_die} for a sum total of #{sum}"
+  @outcome = "first 10 die is #{first_die} and second die is #{second_die} for a sum total of #{sum}"
+  erb(:two_ten)
 end
 
 get("/dice/1/20")do
@@ -39,9 +39,6 @@ get("/dice/1/20")do
   outcome = "first die is #{first_die}"
 end
 
-get("/")do
-  "<h1>Dice Roll</h1>
-  <a href = 'https://curly-trout-4jvrw5w4vpv52qpp4-4567.app.github.dev/dice2/6'>2d6</a> <br>
-  <a href = 'https://curly-trout-4jvrw5w4vpv52qpp4-4567.app.github.dev/dice2/6'>2d10</a> <br>
-  <a href = 'https://curly-trout-4jvrw5w4vpv52qpp4-4567.app.github.dev/dice/1/20'>1d20</a>"
+get("/") do
+ erb(:elephant)
 end
